@@ -1,6 +1,5 @@
 import java.util.*; 
 import java.io.*;
-
   
 class Graph { 
     //Prosedur untuk menge-print Graph dengan representasi list of list adjacent nodes
