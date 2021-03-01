@@ -11,6 +11,6 @@ Saat program dijalankan, ketika program meminta input, masukkan nama file.txt ya
 
 ### Menjalankan program dengan test case baru
 Buatlah file.txt baru yang berisi daftar mata kuliah beserta prerequisite dengan ketentuan berikut.
-1. Format penulisan mata kuliah -> <matakuliah>,<prereq>,<prereq>...<prereq>  (tanpa spasi setelah tanda koma dan tanpa titik di akhir line).
+1. Format penulisan mata kuliah -> matakuliah,prereq1,prereq2,...,prereqn  (tanpa spasi setelah tanda koma dan tanpa titik di akhir line).
 2. Pastikan mata kuliah dan prerequisite memenuhi Directed Acyclic Graph (DAG).
 3. Pastikan file.txt yang telah dibuat berada pada directory yang sama dengan Main.java dan Graph.java.
