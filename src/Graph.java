@@ -85,7 +85,8 @@ class Graph {
 
 
     //Fungsi yang memproses Graph mata kuliah dengan pendekatan decrease and conquer melalui topological sort
-    public static ArrayList<String> DecreaseandConquer(ArrayList<ArrayList<String>> _matkulPrereqList, ArrayList<String> _listMatkul, ArrayList<Integer> _banyakEdge) {
+    public static ArrayList<String> DecreaseandConquer(ArrayList<ArrayList<String>> _matkulPrereqList, ArrayList<String> _listMatkul, 
+    ArrayList<Integer> _banyakEdge) {
         int a = 1;
         ArrayList<String> rencanakuliah = new ArrayList<String>(100);
         while(!_matkulPrereqList.isEmpty()){
@@ -108,13 +109,40 @@ class Graph {
         return rencanakuliah;
     }
 
+
     //Prosedur untuk menge-print rencana kuliah
-    public static void printRencanaKuliah(ArrayList<String> rencanakuliah){
+    public static void printRencanaKuliah(ArrayList<String> rencanakuliah, ArrayList<ArrayList<String>> _matkulPrereqListconsts){
         int x = 1;
         for (int i = 0 ; i < rencanakuliah.size() ; i++ ){
-            System.out.println("Semester " + x + " : " + rencanakuliah.get(i));
-            x++;
+            if (i == 0){
+                System.out.print("Semester " + x + " : " + rencanakuliah.get(i));
+                x++;}
+            if (i>0){
+                if (!isKuliahdiambilbersamaPrerequisite(rencanakuliah.get(i),rencanakuliah.get(i-1), _matkulPrereqListconsts)){
+                    System.out.print(", " + rencanakuliah.get(i));
+                }
+                else{
+                    System.out.print("\nSemester " + x + " : " + rencanakuliah.get(i));
+                    x++;
+                }
+            }
         }
     }
     
+
+    //Fungsi yang menge-check apakah kuliah yang diambil pada suatu semester bersamaan dengan prerequisitenya
+    public static boolean isKuliahdiambilbersamaPrerequisite(String kuliah, String apakahPrereq, ArrayList<ArrayList<String>>
+     _matkulPrereqListconsts){
+        boolean found = false;
+        for (int i = 0 ; i < _matkulPrereqListconsts.size() ; i++){
+            if (kuliah.equals(_matkulPrereqListconsts.get(i).get(0))){
+                int iterator = 0;
+                while (iterator < _matkulPrereqListconsts.get(i).size() && !found){
+                    found = apakahPrereq.equals(_matkulPrereqListconsts.get(i).get(iterator));
+                    iterator++;
+                }
+            }
+        }
+        return found;
+    }
 } 
